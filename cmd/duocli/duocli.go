@@ -24,7 +24,7 @@ func main() {
 			&cli.StringFlag{
 				Name:        "config",
 				Aliases:     []string{"c"},
-				Usage:       "load configuration from `FILE`",
+				Usage:       "load configuration from JSON `FILE`",
 				DefaultText: ".duocli.json",
 			},
 		},
@@ -71,7 +71,7 @@ func main() {
 					},
 					{
 						Name:   "remove",
-						Usage:  "remove user and any attached phones or tokens",
+						Usage:  "remove user and any attached phones",
 						Action: user.Remove,
 						Flags: []cli.Flag{
 							&cli.StringSliceFlag{Name: "username", Aliases: []string{"u"}, Required: true, Usage: "username, can be specified multiple times"},
@@ -81,9 +81,17 @@ func main() {
 				},
 			},
 			{
-				Name:   "docs",
+				Name:   "manual",
 				Hidden: true,
-				Action: docs.Generate,
+				Action: docs.Manual,
+				Flags: []cli.Flag{
+					&cli.StringFlag{Name: "output", Required: true, Usage: "path to write man page"},
+				},
+			},
+			{
+				Name:   "readme",
+				Hidden: true,
+				Action: docs.Readme,
 				Flags: []cli.Flag{
 					&cli.StringFlag{Name: "output", Required: true, Usage: "path to write man page"},
 				},

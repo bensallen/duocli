@@ -11,7 +11,9 @@ builds:
     main: ./cmd/duocli/duocli.go
 before:
   hooks:
-  - "go run cmd/duocli/duocli.go docs --output duocli.8"
+  - "go run cmd/duocli/duocli.go manual --output duocli.8"
+  - "go run cmd/duocli/duocli.go readme --output README.md"
+
 archives:
   - replacements:
       darwin: Darwin
@@ -46,3 +48,5 @@ nfpms:
       dst: /usr/share/man/man8/duocli.8
     - src: scripts/bash_autocomplete
       dst: /etc/bash_completion.d/duocli
+    - src: duocli.json.example
+      dst: /usr/share/duocli/duocli.json.example
