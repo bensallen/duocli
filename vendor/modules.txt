@@ -1,0 +1,14 @@
+# github.com/cpuguy83/go-md2man/v2 v2.0.0-20190314233015-f79a8a8ca69d
+github.com/cpuguy83/go-md2man/v2/md2man
+# github.com/duosecurity/duo_api_golang v0.0.0-20201112143038-0e07e9f869e3 => github.com/bensallen/duo_api_golang v0.0.0-20210303044231-5723b6d8fe51
+## explicit
+github.com/duosecurity/duo_api_golang
+github.com/duosecurity/duo_api_golang/admin
+# github.com/russross/blackfriday/v2 v2.0.1
+github.com/russross/blackfriday/v2
+# github.com/shurcooL/sanitized_anchor_name v1.0.0
+github.com/shurcooL/sanitized_anchor_name
+# github.com/urfave/cli/v2 v2.3.0
+## explicit
+github.com/urfave/cli/v2
+# github.com/duosecurity/duo_api_golang => github.com/bensallen/duo_api_golang v0.0.0-20210303044231-5723b6d8fe51

@@ -1,0 +1,48 @@
+builds:
+  - binary: duocli
+    flags:
+      - -mod=vendor
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+    goarch:
+      - amd64
+    main: ./cmd/duocli/duocli.go
+before:
+  hooks:
+  - "go run cmd/duocli/duocli.go docs --output duocli.8"
+archives:
+  - replacements:
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+      386: i386
+      amd64: x86_64
+      arm64: aarch64
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+nfpms:
+  - description: "DuoCLI is a CLI interface to the Duo Admin API."
+    maintainer: "Benjamin S. Allen <bsallen@alcf.anl.gov>"
+    homepage: "http://github.com/bensallen/duocli"
+    license: "BSD"
+    formats:
+      - rpm
+      - deb
+    file_name_template: "{{ .ProjectName }}-{{ .Version }}-{{ .Release }}.{{ .Arch }}"
+    release: 1
+    bindir: /usr/bin
+    replacements:
+      386: i386
+      amd64: x86_64
+      arm64: aarch64
+    contents:
+    - src: "duocli.8"
+      dst: /usr/share/man/man8/duocli.8
+    - src: scripts/bash_autocomplete
+      dst: /etc/bash_completion.d/duocli
