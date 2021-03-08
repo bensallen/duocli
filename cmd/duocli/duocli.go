@@ -35,9 +35,9 @@ func main() {
 				HideHelpCommand: true,
 				Subcommands: []*cli.Command{
 					{
-						Name:   "add",
-						Usage:  "add a user",
-						Action: user.Add,
+						Name:   "create",
+						Usage:  "create a user",
+						Action: user.Create,
 						Flags: []cli.Flag{
 							&cli.StringFlag{Name: "username", Aliases: []string{"u"}, Required: true, Usage: "username"},
 							&cli.StringSliceFlag{Name: "group", Aliases: []string{"g"}, Usage: "add user to group, can be specified multiple times to add user to multiple groups"},
@@ -67,15 +67,16 @@ func main() {
 							&cli.StringFlag{Name: "firstName", Aliases: []string{"f"}, Usage: "first name of user"},
 							&cli.StringFlag{Name: "lastName", Aliases: []string{"l"}, Usage: "last name of user"},
 							&cli.StringFlag{Name: "status", Aliases: []string{"s"}, Usage: "status of user: active, disabled, or bypass"},
+							&cli.BoolFlag{Name: "create", Aliases: []string{"c"}, Usage: "create user if not found"},
 						},
 					},
 					{
-						Name:   "remove",
-						Usage:  "remove user and any attached phones",
-						Action: user.Remove,
+						Name:   "delete",
+						Usage:  "delete user and any attached phones",
+						Action: user.Delete,
 						Flags: []cli.Flag{
 							&cli.StringSliceFlag{Name: "username", Aliases: []string{"u"}, Required: true, Usage: "username, can be specified multiple times"},
-							&cli.BoolFlag{Name: "phone", Aliases: []string{"P"}, Usage: "remove any phones found attached to the user before removing the user", Value: true},
+							&cli.BoolFlag{Name: "phone", Aliases: []string{"P"}, Usage: "delete any phones found attached to the user before deleting the user", Value: true},
 						},
 					},
 				},
@@ -101,6 +102,6 @@ func main() {
 
 	err := app.Run(os.Args)
 	if err != nil {
-		log.Fatalf("Error, %v", err)
+		log.Fatalf("error, %v", err)
 	}
 }
