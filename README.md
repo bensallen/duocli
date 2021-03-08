@@ -35,9 +35,9 @@ duocli [GLOBAL OPTIONS] command [COMMAND OPTIONS] [ARGUMENTS...]
 
 manage users
 
-### add
+### create
 
-add a user
+create a user
 
 **--email, -e**="": email address of user
 
@@ -63,6 +63,8 @@ modify a user's attributes, add or remove group membership
 
 **--addgroup, -g**="": add user to groups, adds to existing memberships, and can be specified multiple times to add user to multiple groups
 
+**--create, -c**: create user if not found
+
 **--delgroup, -G**="": remove user from groups, removes from existing memberships, and can be specified multiple times to remove user from multiple groups
 
 **--email, -e**="": email address of user
@@ -75,10 +77,10 @@ modify a user's attributes, add or remove group membership
 
 **--username, -u**="": username
 
-### remove
+### delete
 
-remove user and any attached phones
+delete user and any attached phones
 
-**--phone, -P**: remove any phones found attached to the user before removing the user
+**--phone, -P**: delete any phones found attached to the user before deleting the user
 
 **--username, -u**="": username, can be specified multiple times
