@@ -18,6 +18,7 @@ func Create(c *cli.Context) error {
 
 	groups := c.StringSlice("group")
 	email := c.String("email")
+	realName := c.String("realName")
 	firstName := c.String("firstName")
 	lastName := c.String("lastName")
 	status := c.String("status")
@@ -43,6 +44,7 @@ func Create(c *cli.Context) error {
 	user := admin.User{
 		Username:  username,
 		Email:     email,
+		RealName:  &realName,
 		FirstName: &firstName,
 		LastName:  &lastName,
 		Status:    status,
@@ -65,6 +67,7 @@ func Modify(c *cli.Context) error {
 	addgroups := c.StringSlice("addgroup")
 	delgroups := c.StringSlice("delgroup")
 	email := c.String("email")
+	realName := c.String("realName")
 	firstName := c.String("firstName")
 	lastName := c.String("lastName")
 	status := c.String("status")
@@ -100,6 +103,7 @@ func Modify(c *cli.Context) error {
 	user := admin.User{
 		Username:  username,
 		Email:     email,
+		RealName:  &realName,
 		FirstName: &firstName,
 		LastName:  &lastName,
 		Status:    status,

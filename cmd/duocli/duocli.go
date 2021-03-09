@@ -16,7 +16,7 @@ func main() {
 	app := &cli.App{
 
 		Name:                 "duocli",
-		Usage:                "CLI Interface to Duo Admin API",
+		Usage:                "CLI Interface to Duo Admin API: https://duo.com/docs/adminapi",
 		Version:              version,
 		HideHelpCommand:      true,
 		EnableBashCompletion: true,
@@ -42,6 +42,7 @@ func main() {
 							&cli.StringFlag{Name: "username", Aliases: []string{"u"}, Required: true, Usage: "username"},
 							&cli.StringSliceFlag{Name: "group", Aliases: []string{"g"}, Usage: "add user to group, can be specified multiple times to add user to multiple groups"},
 							&cli.StringFlag{Name: "email", Aliases: []string{"e"}, Usage: "email address of user"},
+							&cli.StringFlag{Name: "realName", Aliases: []string{"r"}, Usage: "real name of user"},
 							&cli.StringFlag{Name: "firstName", Aliases: []string{"f"}, Usage: "first name of user"},
 							&cli.StringFlag{Name: "lastName", Aliases: []string{"l"}, Usage: "last name of user"},
 							&cli.StringFlag{Name: "status", Aliases: []string{"s"}, Usage: "status of user: active, disabled, or bypass", Value: "active"},
@@ -64,6 +65,7 @@ func main() {
 							&cli.StringSliceFlag{Name: "addgroup", Aliases: []string{"g"}, Usage: "add user to groups, adds to existing memberships, and can be specified multiple times to add user to multiple groups"},
 							&cli.StringSliceFlag{Name: "delgroup", Aliases: []string{"G"}, Usage: "remove user from groups, removes from existing memberships, and can be specified multiple times to remove user from multiple groups"},
 							&cli.StringFlag{Name: "email", Aliases: []string{"e"}, Usage: "email address of user"},
+							&cli.StringFlag{Name: "realName", Aliases: []string{"r"}, Usage: "real name of user"},
 							&cli.StringFlag{Name: "firstName", Aliases: []string{"f"}, Usage: "first name of user"},
 							&cli.StringFlag{Name: "lastName", Aliases: []string{"l"}, Usage: "last name of user"},
 							&cli.StringFlag{Name: "status", Aliases: []string{"s"}, Usage: "status of user: active, disabled, or bypass"},
@@ -94,7 +96,7 @@ func main() {
 				Hidden: true,
 				Action: docs.Readme,
 				Flags: []cli.Flag{
-					&cli.StringFlag{Name: "output", Required: true, Usage: "path to write man page"},
+					&cli.StringFlag{Name: "output", Required: true, Usage: "path to write readme"},
 				},
 			},
 		},

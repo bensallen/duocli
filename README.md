@@ -2,7 +2,7 @@
 
 # NAME
 
-duocli - CLI Interface to Duo Admin API
+duocli - CLI Interface to Duo Admin API: https://duo.com/docs/adminapi
 
 # SYNOPSIS
 
@@ -47,6 +47,8 @@ create a user
 
 **--lastName, -l**="": last name of user
 
+**--realName, -r**="": real name of user
+
 **--status, -s**="": status of user: active, disabled, or bypass (default: active)
 
 **--username, -u**="": username
@@ -72,6 +74,8 @@ modify a user's attributes, add or remove group membership
 **--firstName, -f**="": first name of user
 
 **--lastName, -l**="": last name of user
+
+**--realName, -r**="": real name of user
 
 **--status, -s**="": status of user: active, disabled, or bypass
 
