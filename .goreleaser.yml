@@ -1,48 +1,65 @@
+version: 2
+
+
 builds:
-  - binary: duocli
-    flags:
-      - -mod=vendor
+  - id: duocli
+    main: ./cmd/duocli/duocli.go
+    binary: duocli
     env:
       - CGO_ENABLED=0
+    flags:
+      - -mod=vendor
     goos:
       - linux
     goarch:
       - amd64
-    main: ./cmd/duocli/duocli.go
+
 before:
   hooks:
-  - "go run cmd/duocli/duocli.go manual --output duocli.8"
-  - "go run cmd/duocli/duocli.go readme --output README.md"
+    - go run ./cmd/duocli/duocli.go manual --output duocli.8
+    - go run ./cmd/duocli/duocli.go readme --output README.md
 
 archives:
-  - replacements:
-      darwin: Darwin
-      linux: Linux
-      windows: Windows
-      386: i386
-      amd64: x86_64
-      arm64: aarch64
+  - id: default
+    wrap_in_directory: true
+    files:
+      - README.md
+      - LICENSE
+      - duocli.8
+    name_template: >-
+      {{ .ProjectName }}_{{ .Version }}_
+      {{- if eq .Os "darwin" }}macOS
+      {{- else if eq .Os "linux" }}Linux
+      {{- else }}{{ .Os }}{{ end }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else }}{{ .Arch }}{{ end }}
+
 checksum:
-  name_template: 'checksums.txt'
+  name_template: "checksums.txt"
+
 snapshot:
-  name_template: "{{ .Tag }}-next"
+  version_template: "{{ incpatch .Version }}-next"
+
 changelog:
+  use: git
   sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+
 nfpms:
-  - description: "DuoCLI is a CLI interface to the Duo Admin API."
+  - id: duocli
+    package_name: duocli
+    description: "DuoCLI is a CLI interface to the Duo Admin API."
     maintainer: "Benjamin S. Allen <bsallen@alcf.anl.gov>"
-    homepage: "http://github.com/bensallen/duocli"
+    homepage: "https://github.com/bensallen/duocli"
     license: "BSD"
     formats:
       - rpm
       - deb
-    file_name_template: "{{ .ProjectName }}-{{ .Version }}-{{ .Release }}.{{ .Arch }}"
     release: 1
     bindir: /usr/bin
-    replacements:
-      386: i386
-      amd64: x86_64
-      arm64: aarch64
     contents:
     - src: "duocli.8"
       dst: /usr/share/man/man8/duocli.8
@@ -50,3 +67,7 @@ nfpms:
       dst: /etc/bash_completion.d/duocli
     - src: duocli.json.example
       dst: /usr/share/duocli/duocli.json.example
+    file_name_template: >-
+      {{ .ProjectName }}-{{ .Version }}-{{ .Release }}.
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else }}{{ .Arch }}{{ end }}
