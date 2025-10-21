@@ -1,7 +1,7 @@
 # github.com/cpuguy83/go-md2man/v2 v2.0.0-20190314233015-f79a8a8ca69d
 ## explicit; go 1.12
 github.com/cpuguy83/go-md2man/v2/md2man
-# github.com/duosecurity/duo_api_golang v0.0.0-20250430191550-ac36954387e7
+# github.com/duosecurity/duo_api_golang v0.0.0-20250430191550-ac36954387e7 => github.com/bensallen/duo_api_golang v0.0.0-20251020234356-c1607aec6ca5
 ## explicit; go 1.15
 github.com/duosecurity/duo_api_golang
 github.com/duosecurity/duo_api_golang/admin
@@ -14,3 +14,4 @@ github.com/shurcooL/sanitized_anchor_name
 # github.com/urfave/cli/v2 v2.3.0
 ## explicit; go 1.11
 github.com/urfave/cli/v2
+# github.com/duosecurity/duo_api_golang => github.com/bensallen/duo_api_golang v0.0.0-20251020234356-c1607aec6ca5

@@ -2,6 +2,8 @@ module github.com/bensallen/duocli
 
 go 1.24
 
+replace github.com/duosecurity/duo_api_golang => github.com/bensallen/duo_api_golang v0.0.0-20251020234356-c1607aec6ca5
+
 require (
 	github.com/duosecurity/duo_api_golang v0.0.0-20250430191550-ac36954387e7
 	github.com/urfave/cli/v2 v2.3.0
